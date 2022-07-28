@@ -18,7 +18,7 @@ public class Enlace {
 
         try {  
             // db parameters  
-            String url = "jdbc:sqlite:bd/Trabajador.bd";  
+            String url = "jdbc:sqlite:bd/Base001.bd.db";  
             // create a connection to the database  
             conn = DriverManager.getConnection(url);  
             //System.out.println(conn.isClosed());
@@ -39,8 +39,8 @@ public class Enlace {
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = String.format("INSERT INTO Trabajador (ci, nombre, "
-                    + "correo, sueldo, mesSueldo) "
+            String data = String.format("INSERT INTO trabajadores (ci,nombre,"
+                    + "correo,sueldo,mesSueldo) "
                     + "values ('%s', '%s', '%s', '%.2f', %d)", 
                     trabajador.obtenerCedula(),
                     trabajador.obtenerNombre(),
@@ -62,7 +62,7 @@ public class Enlace {
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = "Select * from Trabajador;";
+            String data = "Select * from trabajadores;";
             
             ResultSet rs = statement.executeQuery(data);
             while(rs.next()){
